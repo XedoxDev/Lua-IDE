@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:background="@color/background">
+
+    <androidx.appcompat.widget.Toolbar
+         android:layout_height="?attr/actionBarSize"
+         android:layout_width="match_parent"
+         android:background="@color/toolbar"
+         app:titleTextColor="@color/toolbarTitle"
+         android:id="@+id/toolbar" />
+
+    <com.google.android.material.tabs.TabLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:layout_below="@+id/toolbar"
+         android:background="@color/primary"
+         app:tabSelectedTextColor="@color/tabsTitle"
+         android:id="@+id/tabs" />
+
+    <androidx.viewpager2.widget.ViewPager2
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:layout_below="@+id/tabs"
+         android:id="@+id/editorPager" />
+
+</RelativeLayout>

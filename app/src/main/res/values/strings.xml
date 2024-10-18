@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lua - IDE</string>
+    <string name="errro_save_file">Ошибка при сохранении файла: </string>
+    <string name="save_files">Сохранить файлы</string>
+    <string name="run">Запустить</string>
+    <string name="makeProject">Создать проект</string>
+    <string name="make">Создать</string>
+    <string name="project_name">Название проекта...</string>
+    <string name="make_file">Создать файл</string>
+    <string name="file_name">Название файла</string>
+    <string name="remove_file">Удалить файл</string>
+</resources>

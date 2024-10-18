@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#39B0FF</color>
+    <color name="primaryDark">#399FDE</color>
+    <color name="toolbar">#39B0FF</color>
+    <color name="toolbarIcon">#ffffff</color>
+    <color name="toolbarTitle">#ffffff</color>
+    <color name="tabsTitle">#ffffff</color>
+    <color name="background">#ffffff</color>
+    <color name="icon">#000000</color>
+    <color name="divider">#000000</color>
+</resources>

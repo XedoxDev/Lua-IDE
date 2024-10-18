@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/save"
+        android:title="@string/save_files" />
+    
+    <item
+        android:id="@+id/run"
+        android:title="@string/run" 
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_run"/>
+    
+    <item
+        android:id="@+id/make_file"
+        android:title="@string/make_file" />
+
+</menu>
