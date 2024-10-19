@@ -3,10 +3,15 @@ package xedox.luaide.runCode;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
+
 import xedox.luaide.editor.view.TextField;
 import xedox.luaide.project.Project;
 
@@ -27,31 +32,32 @@ public class LuaInterpreter {
     }
 
     public void run() {
+        List<String> codeList = new ArrayList<>();
+        for (File file : project.getFiles()) {
+            if (file.getName().endsWith(".lua")) codeList.add(readFile(file));
+        }
         try {
-            for (File file : project.getFiles()) {
-                _G.load(readFile(file));
-            }
-
-            Thread thread =
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            LuaValue result = _G.call();
-                            if (!result.isnil()) {
-                                String out = result.toString();
-                                editor.println(
-                                        out.substring(0, out.length() < 3 ? 0 : out.length() - 3));
+            CodeTask.execute(
+                    () -> {
+                        for (String code : codeList) {
+                            try {
+                                _G.load(code);
+                                editor.println(_G.call().toString());
+                            } catch (LuaError err) {
+                                editor.println(err.toString() + "\nCode:\n" + code);
                             }
                         }
-                    };
-        } catch (LuaError err) {
-            editor.println(err.toString());
+                        _G.load(readFile(project.getMain()));
+                        editor.println(_G.call().toString());
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            editor.println(e.toString());
         }
     }
 
     private static String readFile(File file) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             StringBuilder buffer = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) {
@@ -60,7 +66,7 @@ public class LuaInterpreter {
             return buffer.toString();
         } catch (Exception e) {
             e.printStackTrace();
+            return "print('Error read code-file')";
         }
-        return "null";
     }
 }

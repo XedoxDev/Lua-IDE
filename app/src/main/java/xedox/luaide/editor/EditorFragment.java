@@ -41,6 +41,7 @@ public class EditorFragment extends Fragment {
         this.editor = editor;
         editor.setText(readFile(file));
         editor.startParserTask();
+        
         return editor;
     }
 

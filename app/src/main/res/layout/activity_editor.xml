@@ -19,6 +19,7 @@
          android:layout_below="@+id/toolbar"
          android:background="@color/primary"
          app:tabSelectedTextColor="@color/tabsTitle"
+         app:tabIndicatorColor="@color/tabsTitle"
          android:id="@+id/tabs" />
 
     <androidx.viewpager2.widget.ViewPager2

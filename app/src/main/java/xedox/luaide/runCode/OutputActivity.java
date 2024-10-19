@@ -22,8 +22,7 @@ public class OutputActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextField output;
     private Project project;
-    private String code;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +30,13 @@ public class OutputActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         output = findViewById(R.id.output);
         project = new Project(ProjectType.CONSOLE, getIntent().getStringExtra("name"));
-        code = getIntent().getStringExtra("code");
         output.setSyntaxHighlight(false);
         run();
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(project.getName());
+        getSupportActionBar().setTitle(getTitle() + ": " + project.getName());
     }
 
     @Override

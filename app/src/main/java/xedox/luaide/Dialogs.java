@@ -16,14 +16,11 @@ public class Dialogs {
     public static void showCreateProjectDialog(ProjectsActivity act) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(act);
         dialog.setTitle(act.getString(R.string.makeProject));
-
-        LayoutInflater inflater = act.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.create_project_dialog, null);
-        dialog.setView(dialogView);
-
-        EditText nameInput = dialogView.findViewById(R.id.project_name);
+        
+        EditText nameInput = new EditText(act);
         nameInput.setHint(act.getString(R.string.project_name));
         dialog.setView(nameInput);
+        
         dialog.setPositiveButton(
                 R.string.make,
                 new DialogInterface.OnClickListener() {

@@ -84,4 +84,13 @@ public class Project {
     public void setFiles(List<File> files) {
         this.files = files;
     }
+
+    public File getMain() {
+        for (File file : files) {
+            if (file.getName() == "main.lua") {
+                return file;
+            }
+        }
+        return null;
+    }
 }

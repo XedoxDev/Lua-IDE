@@ -45,8 +45,10 @@ public class EditorActivity extends AppCompatActivity {
         project = new Project(ProjectType.CONSOLE, name);
 
         updateTabs();
-
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(getTitle() + ": " + name);
     }
 
     public void updateTabs() {
@@ -95,6 +97,7 @@ public class EditorActivity extends AppCompatActivity {
             Intent i = new Intent(EditorActivity.this, OutputActivity.class);
             i.putExtra("name", project.getName());
             startActivity(i);
+            finish();
         }
         if (item.getItemId() == R.id.make_file) {
             Dialogs.showMakeFileDialog(this, project);
